@@ -42,7 +42,7 @@ doAnnotatedHeatmap <-function(
   if (wdt==0){wdt=dim(matx)[2]*2+dim(BigTab)[2]/10}
   if (hgt==0){hgt=max(8,n.genes/4)}
 
-  mat = mat[,rownames(annot.col)]
+  mat = matx[,rownames(annot.col)]
 
   scale_rows<-function (x)
   {
