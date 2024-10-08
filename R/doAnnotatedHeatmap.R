@@ -6,8 +6,8 @@ doAnnotatedHeatmap <-function(
     colsplitx=NULL, # splitting column
     column_ha = NULL,
     BigTab = NULL,
-    wdt=0, # width
-    hgt=0, # height
+    wdt=NULL, # width
+    hgt=NULL, # height
     setname='', # description of the gene set
     column_names_max_height = unit(8, "cm"),
     BigTabcols=NULL,
@@ -39,8 +39,8 @@ doAnnotatedHeatmap <-function(
   # number of genes
   n.genes = dim(matx)[1]
 
-  if (wdt==0){wdt=dim(matx)[2]*2+dim(BigTab)[2]/10}
-  if (hgt==0){hgt=max(8,n.genes/4)}
+  if (is.null(wdt)){wdt=dim(matx)[2]*2+dim(BigTab)[2]/10}
+  if (is.null(hgt)){hgt=max(8,n.genes/4)}
 
   mat = matx[,rownames(annot.col)]
 

@@ -8,17 +8,17 @@
 
 generate.Zscores = function(mat,geneset,geneset.name){
 
-  # subset the immune genes set
+  # subset the geneset
   sub.mat = mat[which(rownames(mat) %in% geneset),]
 
-  # evaluate the zscores for the immune genes set
+  # evaluate the z-score for each gene in the geneset
   z.sub.mat = (sub.mat - apply(sub.mat, 1, mean)) / apply(sub.mat, 1, sd)
 
-  # evaluate the zscores for the entire gene set
+  # evaluate the z-score for the gene set
   k = dim(z.sub.mat)[1]
   z.scores.mat = apply(z.sub.mat, 2, function(x) sum(x) / sqrt(k))
 
-  # create a data frame in long format with the zscores evaluated for each sample
+  # create a data frame in long format with the z evaluated for each sample
   z.scores.data = data.frame(geneset.name = geneset.name, z.scores = z.scores.mat)
 
   return(z.scores.data)
