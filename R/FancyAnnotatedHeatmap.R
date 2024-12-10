@@ -1,5 +1,5 @@
 
-doAnnotatedHeatmap <-function(
+FancyAnnotatedHeatmap <-function(
     grafname, # grafname
     matx, # matrix of expression
     annot.col, # annotation data
@@ -97,10 +97,12 @@ if(!is.null(cfx)){
   if(!is.null(cfx)){
   for (i in 1:ncontrasts){
 
-    thisha=rowAnnotation( x=anno_text( gt_render((Tab[,i+1]), align_widths = FALSE),
-                                       gp = gpar(box_col = "white", box_lwd =1, fontface=2, fontsize = 12,
-                                                 fontfamily = "mono"),
-                                       just = "left",show_name = FALSE))
+    thisha=rowAnnotation(
+      x=anno_text( gt_render(Tab[,i+1], align_widths = FALSE,gp = gpar(box_col='white')),
+                   gp = gpar(box_col = "white", box_lwd =1, fontface=2, fontsize = 12,fontfamily = "mono"),
+                                       just = "left",show_name = FALSE),
+                          gp = gpar(box_lwd=1,box_col='black')
+                          )
     names(thisha)<-paste('Tab',i,sep='')
     htlist=htlist+thisha
   }
@@ -115,7 +117,7 @@ if(!is.null(cfx)){
     nm=paste('Tab',i,sep='')
     decorate_annotation(nm, {
       grid.text(gsub('\\.','\n',substring(colnames(Tab)[i+1],7)), y = unit(1, "npc") + unit(2, "mm"), just = "bottom",hjust =0,rot=0,
-                gp = gpar(box_col = "white", box_lwd =1, fontface=2,fontsize=10,fontfamily='mono'))
+                gp = gpar(box_col = "black", box_lwd =1, fontface=2,fontsize=10,fontfamily='mono'))
     })
   }
   }
