@@ -17,6 +17,7 @@ FancyAnnotatedHeatmap <-function(
     fnt_size_title = 20,
     scalerows=TRUE,
     rampvalues = 1.5,
+    bottom_annotation = NULL,
     ...
     #tabNames = NULL # example of 3 contrasts,...
 
