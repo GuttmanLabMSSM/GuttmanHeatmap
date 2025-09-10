@@ -6,7 +6,6 @@
 #' @param geneset.name is a string with the name of the gene set
 #' @examples
 
-
 minimal<-function(){
 require(tidyverse)
 #--------------------------------------------
