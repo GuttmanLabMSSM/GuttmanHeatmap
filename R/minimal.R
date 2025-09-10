@@ -1,10 +1,7 @@
 #' This function creates a minimal example dataset
 #' The output of this function is a matrix of log-fold changes and a matrix of p-values
 #' @description Generation of artificial dataset for testing purposes
-#' @param mat is a matrix of expressions with genes as rownames and samples ids as columns
-#' @param geneset is a vector with gene symbols
-#' @param geneset.name is a string with the name of the gene set
-#' @examples
+
 
 minimal<-function(){
 require(tidyverse)
