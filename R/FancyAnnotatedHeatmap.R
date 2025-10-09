@@ -93,10 +93,10 @@ if(!is.null(cfx)){
   p.cuts.stars=c(0.001,0.01, 0.05, 0.1,1)
   p.symbols.stars= c(
     "<span style='font-size:8pt;color:black'>***</span>",
-    paste0("<span style='font-size:8pt;color:black'>**</span>","<span style='font-size:8pt;color:white'>*</span>"),
-    paste0("<span style='font-size:8pt;color:black'>*</span>","<span style='font-size:8pt;color:white'>**</span>"),
-    paste0("<span style='font-size:8pt;color:black'><sup>+</sup></span>","<span style='font-size:8pt;color:white'>**</span>"),
-    paste0("<span style='font-size:8pt;color:black'></span>","<span style='font-size:8pt;color:white'>***</span>")
+    paste0("<span style='font-size:8pt;color:black'>**</span>","<span style='font-size:8pt;color:white'>o</span>"),
+    paste0("<span style='font-size:8pt;color:black'>*</span>","<span style='font-size:8pt;color:white'>oo</span>"),
+    paste0("<span style='font-size:8pt;color:black'><sup>+</sup></span>","<span style='font-size:8pt;color:white'>oo</span>"),
+    paste0("<span style='font-size:8pt;color:black'></span>","<span style='font-size:8pt;color:white'>ooo</span>")
   )
 
   coefsx[coefsx==0]<-1e-10
