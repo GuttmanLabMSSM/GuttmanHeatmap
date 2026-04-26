@@ -55,13 +55,41 @@ FancyAnnotatedHeatmap <- function(
       sign(lgfch) * (2 ^ abs(lgfch))
     }
 
+    # Format a number as a fixed-width HTML string so that values in a column
+    # align visually when rendered via gt_render().
+    #
+    # Alignment is achieved by prepending invisible white-colored hyphens that
+    # occupy the same horizontal space as digits or a minus sign would. This
+    # keeps the decimal point and sign column consistent across all values.
+    #
+    # Args:
+    #   x  : numeric scalar — the (already-transformed) fold-change value.
+    #   n  : integer — number of digits to the left of the decimal in the
+    #        largest absolute value in the column (i.e. ceiling(log10(max|coefsx|))).
+    #        Controls how many leading invisible characters are prepended.
+    #
+    # Returns:
+    #   A character string containing an HTML <span> with white-colored leading
+    #   hyphens followed by the zero-padded number, e.g.:
+    #     "  3.14"  →  "<span style='color:white'>\\-\\-</span>3.14"
+    #     " -3.14"  →  "<span style='color:white'>\\-</span>-3.14"
+    #     " 12.50"  →  "<span style='color:white'>\\-</span>12.50"
+    #     "-12.50"  →  "-12.50"   (no leading span needed)
     padding <- function(x, n) {
+      # Number of integer digits in x (used to determine leading padding)
       m <- ceiling(log10(abs(x) + .001))
       x <- as.character(x)
+
+      # Positive numbers get one extra leading space to align with the '-' sign
+      # of negative numbers
       initspace <- n - m
       if (substr(x, 1, 1) != '-') initspace <- initspace + 1
+
+      # Ensure a decimal point is present, then zero-pad to a consistent width
       if (!str_detect(x, '\\.'))  x <- paste(x, '.', sep = '')
       while (nchar(x) < n - initspace + 4) x <- paste(x, '0', sep = '')
+
+      # Build invisible leading characters as white-colored hyphens
       initstr <- paste0("<span style='color:white'>", str_c(rep('\\-', initspace), collapse = ''))
       paste(initstr, "</span>", x, sep = '')
     }
