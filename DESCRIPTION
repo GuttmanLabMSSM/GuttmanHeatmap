@@ -1,11 +1,20 @@
 Package: GuttmanHeatmap
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Annotated Heatmaps for RNA-seq Gene Expression Analysis
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Joel Correa da Rosa <correadarosaj@gmail.com>
+Maintainer: Joel Correa da Rosa <correadarosaj@gmail.com>
+Description: Provides functions to create richly annotated heatmaps for RNA-seq
+    gene expression data. Supports significance annotations, log2 fold change
+    overlays, clinical metadata, and multi-contrast comparisons using the
+    ComplexHeatmap framework.
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Imports:
+    ComplexHeatmap,
+    circlize,
+    stringr,
+    weights,
+    plyr,
+    tidyverse
